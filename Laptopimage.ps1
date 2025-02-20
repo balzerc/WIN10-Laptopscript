@@ -43,6 +43,14 @@ Invoke-WebRequest -Uri $downloadUrl -OutFile $outputFile
 #wait for install
 Start-Sleep -Seconds 10
 
+# Check if Lenovo System Update has installed successfully
+$lenovoPath = "C:\Program Files (x86)\Lenovo\System Update"
+if (Test-Path -Path $lenovoPath) {
+    Write-Output "Lenovo System Update has installed successfully"
+} else {
+    Write-Output "Lenovo System Update install has failed"
+}
+
 #open lenovo system update
 Start-Process "C:\Program Files (x86)\Lenovo\System Update\tvsu.exe"
 
