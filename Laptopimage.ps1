@@ -18,6 +18,13 @@ Invoke-WebRequest -Uri $teamsBootstrapperUrl -OutFile $destinationPath
 
 & $destinationPath -p
 
+# Check if Teams has installed successfully
+$teamsPath = "C:\Program Files\WindowsApps\MSTeams_*_x64__8wekyb3d8bbwe"
+if (Test-Path -Path $teamsPath) {
+    Write-Output "Teams has installed successfully"
+} else {
+    Write-Output "Teams install has failed"
+}
 
 # Installing Lenovo System Update for firmware and BIOS updates
 # This pulls the system update application from the web to the user's download location and installs it silently
